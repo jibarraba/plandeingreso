@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Ingreso de la Humanidad a la Confederación Galáctica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void: #090d18;
+    --panel: #111a2c;
+    --panel-soft: #16203a;
+    --line: rgba(231,227,216,0.10);
+    --line-strong: rgba(231,227,216,0.18);
+    --text: #ece7da;
+    --text-dim: #93a0bb;
+    --text-faint: #5c6885;
+    --blue: #6cb2ec;
+    --blue-soft: rgba(108,178,236,0.14);
+    --gold: #e3ac63;
+    --gold-soft: rgba(227,172,99,0.14);
+    --teal: #67cead;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--void);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ---------- starfield ---------- */
+  .starfield{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(236,231,218,0.55), transparent 60%),
+      radial-gradient(1px 1px at 28% 64%, rgba(236,231,218,0.4), transparent 60%),
+      radial-gradient(1.5px 1.5px at 41% 32%, rgba(236,231,218,0.5), transparent 60%),
+      radial-gradient(1px 1px at 58% 81%, rgba(236,231,218,0.35), transparent 60%),
+      radial-gradient(1.5px 1.5px at 67% 12%, rgba(236,231,218,0.5), transparent 60%),
+      radial-gradient(1px 1px at 77% 47%, rgba(236,231,218,0.4), transparent 60%),
+      radial-gradient(1.5px 1.5px at 89% 70%, rgba(236,231,218,0.5), transparent 60%),
+      radial-gradient(1px 1px at 95% 22%, rgba(236,231,218,0.35), transparent 60%),
+      radial-gradient(1px 1px at 6% 86%, rgba(236,231,218,0.35), transparent 60%),
+      radial-gradient(1px 1px at 35% 95%, rgba(236,231,218,0.3), transparent 60%);
+    background-repeat: repeat;
+    background-size: 100% 1400px;
+    opacity: 0.8;
+  }
+
+  .wrap{ position: relative; z-index: 1; }
+
+  section{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- typography ---------- */
+  h1, h2, h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .eyebrow{
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  p{ margin: 0 0 1.1em 0; color: var(--text); }
+  p.lede{ color: var(--text-dim); }
+
+  a{ color: var(--blue); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 28px 60px;
+    position: relative;
+  }
+
+  .orb-wrap{
+    width: 168px;
+    height: 168px;
+    margin-bottom: 38px;
+  }
+
+  .orb-wrap svg{ width: 100%; height: 100%; }
+
+  @media (prefers-reduced-motion: no-preference){
+    .orb-core{
+      animation: pulse 5.5s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .orb-ring{
+      animation: rotate 60s linear infinite;
+      transform-origin: center;
+    }
+    .orb-ring.reverse{ animation-direction: reverse; animation-duration: 90s; }
+  }
+  @keyframes pulse{
+    0%, 100%{ opacity: 0.85; transform: scale(1); }
+    50%{ opacity: 1; transform: scale(1.06); }
+  }
+  @keyframes rotate{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+  }
+
+  .hero .eyebrow{ margin-bottom: 22px; }
+
+  h1.title{
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.18;
+    max-width: 680px;
+    color: var(--text);
+  }
+  h1.title em{
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .hero .subtitle{
+    margin-top: 26px;
+    max-width: 480px;
+    color: var(--text-dim);
+    font-size: 1.02rem;
+  }
+
+  .scroll-cue{
+    margin-top: 64px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .scroll-cue .line{
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--text-faint), transparent);
+  }
+
+  /* ---------- section dividers ---------- */
+  .divider{
+    max-width: 720px;
+    margin: 110px auto 90px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .divider .rule{ flex: 1; height: 1px; background: var(--line); }
+  .divider svg{ width: 22px; height: 22px; flex-shrink: 0; color: var(--text-faint); }
+
+  /* ---------- section headers ---------- */
+  .section-head{ margin-bottom: 54px; }
+  .section-head h2{
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    margin-top: 14px;
+    color: var(--text);
+  }
+  .section-head .roman{ color: var(--gold); font-family: 'Fraunces', serif; font-style: italic; }
+  .section-head p{ margin-top: 18px; max-width: 540px; }
+
+  /* ---------- prefacio items ---------- */
+  .clause{
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+  }
+  .clause:first-of-type{ border-top: 1px solid var(--line-strong); }
+
+  .clause-num{
+    font-family: 'Space Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text-faint);
+    padding-top: 4px;
+  }
+
+  .clause h3{
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .clause p{ color: var(--text-dim); font-size: 0.97rem; margin-bottom: 0; }
+  .clause p .accent{ color: var(--text); }
+
+  .clause-icon{
+    margin-top: 4px;
+  }
+  .clause-icon svg{ width: 20px; height: 20px; color: var(--gold); }
+
+  /* ---------- bitacora timeline ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 26px;
+    border-left: 1px solid var(--line-strong);
+  }
+
+  .entry{
+    position: relative;
+    padding-bottom: 56px;
+  }
+  .entry:last-child{ padding-bottom: 0; }
+
+  .entry::before{
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--void);
+    border: 1.5px solid var(--blue);
+  }
+
+  .entry-label{
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .entry p{ color: var(--text-dim); font-size: 0.99rem; }
+  .entry p strong{ color: var(--text); font-weight: 500; }
+
+  .entry-icon{
+    float: right;
+    margin: 0 0 12px 18px;
+    opacity: 0.9;
+  }
+  .entry-icon svg{ width: 38px; height: 38px; color: var(--teal); }
+  .entry-icon.gold svg{ color: var(--gold); }
+  .entry-icon.blue svg{ color: var(--blue); }
+
+  /* ---------- epilogo ---------- */
+  .epilogo{
+    text-align: center;
+    padding: 0 28px;
+  }
+  .epilogo blockquote{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0 0 36px 0;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .epilogo blockquote span{ color: var(--gold); }
+
+  .epilogo .closing-orb{
+    width: 64px;
+    height: 64px;
+    margin: 40px auto 28px;
+  }
+  .epilogo .closing-orb svg{ width: 100%; height: 100%; }
+
+  .signature{
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+  }
+  .signature strong{ color: var(--text-dim); font-weight: 400; }
+
+  footer{
+    text-align: center;
+    padding: 70px 28px 50px;
+    color: var(--text-faint);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible{ opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1; transform: none; transition: none; }
+    .orb-core, .orb-ring{ animation: none !important; }
+  }
+
+  @media (max-width: 560px){
+    .clause{ grid-template-columns: 38px 1fr; gap: 14px; }
+    .entry-icon{ float: none; margin: 0 0 14px 0; }
+    .entry-icon svg{ width: 32px; height: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="starfield"></div>
+
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="orb-wrap">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle class="orb-ring" cx="50" cy="50" r="46" stroke="rgba(108,178,236,0.25)" stroke-width="0.6" stroke-dasharray="1 5"/>
+        <circle class="orb-ring reverse" cx="50" cy="50" r="38" stroke="rgba(227,172,99,0.3)" stroke-width="0.5" stroke-dasharray="0.5 4"/>
+        <circle class="orb-core" cx="50" cy="50" r="13" fill="var(--blue)" opacity="0.9"/>
+        <circle cx="50" cy="50" r="13" fill="url(#glow)"/>
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#6cb2ec" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#6cb2ec" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <span class="eyebrow">Documento de la Confederación Galáctica</span>
+    <h1 class="title">Plan de Ingreso de la<br>Humanidad a la <em>Confederación<br>Galáctica</em></h1>
+    <p class="subtitle">Diez condiciones para la admisión de la Tierra, y la bitácora del cronista que dio testimonio de su cumplimiento.</p>
+    <div class="scroll-cue">
+      <span>Descender</span>
+      <span class="line"></span>
+    </div>
+  </div>
+
+  <!-- ================= PREFACIO ================= -->
+  <section id="prefacio">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="roman">I.</span> Prefacio</span>
+      <h2>Las diez condiciones del umbral</h2>
+      <p class="lede">Un consejo de sabios interestelares observa a la humanidad. Antes de admitirnos en la red galáctica, debemos demostrar diez signos de madurez como civilización.</p>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">01</div>
+      <div>
+        <h3>El Despertar Planetario</h3>
+        <p>La humanidad vive atrapada en guerras, ego y explotación del planeta. Antes de admitirnos, debemos demostrar un primer signo de unidad global: <span class="accent">una alianza terrícola que trascienda religiones, fronteras y banderas.</span></p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">02</div>
+      <div>
+        <h3>El Juramento de la Biosfera</h3>
+        <p>La Confederación exige que cuidemos la Tierra como un templo sagrado. Debemos restaurar océanos, reforestar, proteger especies y garantizar que la vida prospere — la condición mínima para no ser vistos como <span class="accent">un peligro ecológico en otros mundos.</span></p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">03</div>
+      <div>
+        <h3>El Dominio de la Energía Pura</h3>
+        <p>Para no ser vistos como "bárbaros cósmicos", necesitamos abandonar los combustibles fósiles y dominar la energía limpia y cuántica. Solo cuando nuestra civilización funcione con <span class="accent">energía sostenible</span> se abrirá la primera puerta de comunicación.</p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">04</div>
+      <div>
+        <h3>La Purificación de las Armas</h3>
+        <p>Las especies aceptadas deben renunciar al uso de armas de destrucción masiva. La humanidad debe transformar su instinto de guerra en <span class="accent">tecnologías de defensa planetaria</span> contra meteoritos y radiación cósmica.</p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">05</div>
+      <div>
+        <h3>La Voz Única de la Humanidad</h3>
+        <p>No puede entrar cada país con su embajador: necesitamos un Consejo Planetario elegido por la humanidad entera, <span class="accent">el único autorizado a hablar en nombre de la Tierra</span> frente a la Confederación.</p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">06</div>
+      <div>
+        <h3>El Primer Saludo Estelar</h3>
+        <p>Cuando logremos construir una nave capaz de llegar al borde del sistema solar con viaje tripulado, podremos emitir nuestro saludo interestelar: <span class="accent">un mensaje de armonía, ciencia y arte</span> transmitido en múltiples lenguajes — matemáticas, música, imágenes.</p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">07</div>
+      <div>
+        <h3>La Prueba del Arte Universal</h3>
+        <p>La Confederación mide la madurez no solo en ciencia, sino en capacidad de crear belleza. La música, la poesía y las danzas humanas deben mostrarse en una ceremonia intergaláctica para probar que <span class="accent">no somos máquinas, sino seres de espíritu.</span></p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">08</div>
+      <div>
+        <h3>El Contacto con los Guardianes del Umbral</h3>
+        <p>Antes de entrar, la humanidad será visitada por una raza de mediadores cósmicos — quizás seres de luz o viajeros anfibios estelares. Ellos pondrán a prueba <span class="accent">nuestra compasión y capacidad de convivir con lo radicalmente distinto.</span></p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">09</div>
+      <div>
+        <h3>La Gran Asamblea Estelar</h3>
+        <p>Al ser aceptados, representantes humanos serán llevados a un planeta-nexo, donde miles de civilizaciones se reúnen en un gigantesco anillo orbital. Allí se leerá el <span class="accent">"Tratado de No-Interferencia y Cooperación Cósmica"</span> y se nos asignará un lugar en la red galáctica.</p>
+      </div>
+    </div>
+
+    <div class="clause reveal">
+      <div class="clause-num">10</div>
+      <div>
+        <h3>El Símbolo del Ingreso</h3>
+        <p>La humanidad recibirá un símbolo holográfico: <span class="accent">una estrella azul</span> que flota y se incrusta en la atmósfera de la Tierra, visible como una nueva constelación. El recordatorio de que ya no estamos solos.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider reveal">
+    <div class="rule"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="2.4"/>
+      <circle cx="12" cy="12" r="9" stroke-dasharray="1.5 3"/>
+    </svg>
+    <div class="rule"></div>
+  </div>
+
+  <!-- ================= BITACORA ================= -->
+  <section id="bitacora">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="roman">II.</span> Bitácora del cronista</span>
+      <h2>Por Agniyogi, Cronista Planetario</h2>
+      <p class="lede">Año 22 de la Unificación. Diez años de entradas que narran cómo la Tierra, paso a paso, cumplió cada condición del umbral.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 22 — Entrada 001</span>
+        <p>Hoy empezó todo con una promesa y una llama. No recuerdo la hora exacta: el día olía a lluvia limpia y a madera recién tallada. Las banderas que antes nos dividían colgaban en silencio; alguien las fue retirando una por una mientras miles cantaban sin que nadie los hubiese convocado. Fue el primer gesto: <strong>la Tierra decidió hablar con una sola voz.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 30 C24 30 14 24 14 16 C14 11 18 9 21 11 C22.5 12 24 14 24 14 C24 14 25.5 12 27 11 C30 9 34 11 34 16 C34 24 24 30 24 30 Z" opacity="0"/>
+            <path d="M10 26 C16 22 22 24 24 18 M24 18 C26 24 32 22 38 26"/>
+            <path d="M24 18 L24 12"/>
+            <path d="M24 12 L20 9 M24 12 L28 9"/>
+            <circle cx="24" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <span class="entry-label">Año 22 — Entrada 014</span>
+        <p>Se formalizó el Consejo Planetario. Lo vi nacer: delegados de todas las regiones, rostros curtidos de campesinos, ojos jóvenes de inventoras, ancianas de pueblos costeros. Hubo debate. Hubo llanto. Cuando sellaron el juramento por la biosfera, <strong>una paloma metálica</strong> —símbolo híbrido de tecnología y naturaleza— desplegó sus alas y se elevó como señal. Fue nuestro trámite de paso: demostrar que habíamos elegido la vida.</p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 8 C24 8 24 16 24 16"/>
+            <path d="M24 16 C18 16 13 21 13 28 C13 34 18 39 24 39 C30 39 35 34 35 28 C35 21 30 16 24 16 Z"/>
+            <path d="M17 28 C17 24 20 21 24 21 C28 21 31 24 31 28"/>
+          </svg>
+        </div>
+        <span class="entry-label">Año 23 — Entrada 092</span>
+        <p>La primera luna sin humos fue la que marcó la diferencia. Ciudades que antes respiraban smog mostraron cielos de claridad antigua. Los niños aprendieron energías limpias como quien aprende a leer. Las plantas comenzaron a volver a los baldíos; la biodiversidad volvió a ser política. Esa noche, alguien encendió una lámpara de plasma que no consumía nada que el planeta no pudiese devolver. Fue un faro; <strong>supimos que ya nos veían.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 24 — Entrada 201</span>
+        <p>Nos llegó el Mensaje del Umbral por primera vez. No fue con palabras humanas: fue una secuencia de tonos y un patrón de luz que, al reproducirse en una pantalla pública, hizo que la multitud enmudezca y llorase. El mensaje decía —al menos así lo entendimos—: "Prueben su compasión." Nos dieron cinco pruebas pequeñas, íntimas: salvar una ciudad de la hambruna con paciencia; negociar una tregua con entidades automáticas que no querían apagar sus armas; construir un santuario para especies que nadie valoraba. <strong>Pasamos con cicatrices y con orgullo.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 25 — Entrada 256</span>
+        <p>La Purificación de las Armas se votó en referéndum global. No hubo unanimidad, pero sí un pacto: transformar los hangares de misiles en laboratorios de defensa planetaria —escudos magnéticos, redes de advertencia de asteroides, curadores biológicos. Ver los primeros misiles convertidos en estaciones de semillas fue una visión que ningún poeta hubiera previsto. Lentos, torpes, humanos: <strong>queríamos demostrar que preferíamos curar a destruir.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 26 — Entrada 301</span>
+        <p>Firmamos el Tratado de No-Interferencia con nosotros mismos. Sonó extraño en la ceremonia, pero no lo fue: aceptamos dejar que las culturas se desarrollaran sin imposiciones centralistas. La Confederación nos dijo que la madurez no es homogeneidad, sino <strong>la capacidad de convivir con la diferencia.</strong> Fue una lección que aprendimos con errores.</p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-icon gold">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 30 L24 12 L34 30 Z"/>
+            <path d="M19 30 L24 21 L29 30"/>
+            <path d="M24 12 L24 8"/>
+            <path d="M14 30 L34 30"/>
+          </svg>
+        </div>
+        <span class="entry-label">Año 27 — Entrada 340</span>
+        <p>Construimos la nave frontera: <strong>Amanecer de Śūnyabindu.</strong> No era la más rápida, ni la más suntuosa; era la más colaborativa. Cada componente llevaba firma de algún rincón del planeta: compuestos de coral reciclado de Filipinas, paneles cuánticos diseñados por jóvenes de Nairobi, motores concebidos por obreros de Valparaíso. Al despegar, pensé en todas las manos que la sostuvieron en la mente y la hicieron posible.</p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-icon blue">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 28 Q14 20 18 28 T26 28 T34 28 T38 28"/>
+            <path d="M10 33 Q14 26 18 33 T26 33 T34 33 T38 33"/>
+            <circle cx="24" cy="14" r="2.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <span class="entry-label">Año 28 — Entrada 402</span>
+        <p>El Primer Saludo Estelar fue curioso: enviamos música. No una sola canción, sino una mezcla de latidos, cantos rituales, sinfonías urbanas, y los susurros de una anciana que recordaba su aldea. La onda viajó codificada en patrones matemáticos —lenguaje universal— y, semanas después, recibimos una réplica: una armonía nunca antes escuchada, con notas que parecían dibujar constelaciones. <strong>La respuesta nos devolvió la capacidad de creer.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 29 — Entrada 459</span>
+        <p>Llegaron los Guardianes del Umbral. No fueron imponentes; parecían viajeros cansados que habían visto demasiadas lunas. Nos evaluaron con preguntas que nos obligaban a mirar dentro: "¿Qué harías por un mundo que no es el tuyo?", preguntaron. Hubo historias terribles: sacrificios, traiciones. Hubo también actos silenciosos —compañerismo, rescates anónimos— que pesaron más. Nos pusieron a prueba con una tarea sencilla y feroz: compartir recursos con cuatro planetas en crisis, sin esperar nada a cambio. <strong>Aprendimos a dar sin calcular réditos.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-icon gold">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="15"/>
+            <circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/>
+            <path d="M24 9 L24 13 M24 35 L24 39 M9 24 L13 24 M35 24 L39 24"/>
+          </svg>
+        </div>
+        <span class="entry-label">Año 30 — Entrada 501</span>
+        <p>La Gran Asamblea Estelar fue más vasta de lo imaginado. Un anillo orbital con miles de voces y formas. Entré con el amuleto de la biosfera colgando del cuello y con las manos manchadas de tierra —orgullo humilde. Nos preguntaron por la belleza: enviamos una danza —un baile de Hanga Roa— como símbolo de nuestras raíces, y temblaron ante ella. <strong>Aprendieron nuestro ritmo, y nos ofrecieron el suyo.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 30 — Entrada 507</span>
+        <p>El Símbolo del Ingreso no fue una placa fría ni un número en una lista. Fue una estrella azul que se posó en la ionósfera, visible desde todas las playas al amanecer. Era un holograma suave que proyectaba escenas de la Tierra: ríos, mercados, ancianos tejiendo, niños mirando al cielo. Cuando apareció, la gente gritó, abrazó, rezó, y ofrendó flores en plazas y terrazas. <strong>Ahora pertenecíamos a algo más amplio.</strong></p>
+      </div>
+
+      <div class="entry reveal">
+        <span class="entry-label">Año 31 — Entrada 520</span>
+        <p>En mi última función como cronista testigo, escribo esto desde la plataforma donde se catalogan los nuevos miembros. A mi lado hay un joven poeta que ha aprendido la lengua de las armonías estelares y una ingeniera que aún recuerda cómo soldó la primera antena en su barrio. Nos dieron una matrícula y una palabra: <strong>Confluencia.</strong> Nos llamaron aliados, no súbditos. Nos advirtieron —dulcemente— que el ingreso no nos convierte en perfectos. Somos apenas aprendices de una escuela inmensa.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider reveal">
+    <div class="rule"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="2.4"/>
+      <circle cx="12" cy="12" r="9" stroke-dasharray="1.5 3"/>
+    </svg>
+    <div class="rule"></div>
+  </div>
+
+  <!-- ================= EPILOGO ================= -->
+  <section id="epilogo" class="epilogo">
+    <div class="section-head reveal" style="text-align:center;">
+      <span class="eyebrow">Epílogo</span>
+    </div>
+
+    <p class="reveal" style="color: var(--text-dim); max-width: 580px; margin: 0 auto 30px;">La Confederación no nos "aceptó" por un acto de benevolencia distante. Nos dejó pasar porque, al final, supimos traducir nuestras fallas en acuerdos, nuestra violencia en cuidado, y nuestras soledades en redes de ayuda. Fue un proceso; nos transformó desde adentro.</p>
+
+    <blockquote class="reveal">Cuando la estrella azul se encendió por última vez aquella noche, alguien me preguntó: <span>"¿Cambiamos mucho?"</span><br><br>Respondí: <span>"Nunca cambiamos del todo. Aprendimos a sostenernos."</span></blockquote>
+
+    <p class="reveal" style="color: var(--text-dim); max-width: 580px; margin: 0 auto;">Cierro la bitácora con el mismo rito con que la abrí: con una promesa —la de seguir contando—, y con el sonido de una música que ya no es sólo nuestra, sino un hilo que atraviesa mundos.</p>
+
+    <div class="closing-orb reveal">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="44" stroke="rgba(108,178,236,0.2)" stroke-width="0.6" stroke-dasharray="1 5"/>
+        <circle cx="50" cy="50" r="13" fill="url(#glow2)"/>
+        <circle cx="50" cy="50" r="13" fill="var(--blue)" opacity="0.85"/>
+        <defs>
+          <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#6cb2ec" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#6cb2ec" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <p class="signature reveal"><strong>AGNIYOGI</strong> — Cronista Planetario</p>
+  </section>
+
+  <footer>Plan de Ingreso de la Humanidad · Confederación Galáctica</footer>
+
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
